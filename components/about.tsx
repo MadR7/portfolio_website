@@ -1,18 +1,27 @@
-"use client";
-
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect } from "react";
 import SectionHeading from "./section-heading";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/context/active-section-context";
 
 export default function About() {
+  const {ref, inView} = useInView(
+    {
+      threshold: 0.75
+    }
+  )
+  const {setActiveSection, lastClickTime} = useActiveSectionContext();
 
+  useEffect(()=>{
+    if (inView && Date.now() - lastClickTime > 1000){
+      setActiveSection("About")
+    }
+  }, [inView, setActiveSection, lastClickTime]);
+  
   return (
     <div className="bg-[#183059] relative min-h-screen w-full items-center flex flex-col">
-    <motion.section
+    <section
+      ref = {ref}
       className=" mt-20 max-w-[45rem] text-xl text-gray-200 text-center leading-10 sm:mb-40 scroll-mt-28"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
       id="about"
     >
       <SectionHeading>About Me</SectionHeading>
@@ -45,7 +54,7 @@ export default function About() {
       <p>
         In my free time, I mentor a High School VEX Robotics team competiting in Southern New York.
       </p>
-    </motion.section>
+    </section>
     </div>
   );
   

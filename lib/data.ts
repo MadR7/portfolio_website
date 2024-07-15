@@ -3,6 +3,9 @@ import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import corpcommentImg from "@/public/corpcomment.png";
+import personalwebsite from "@/public/personalwebsite.png"
+import vexrobotics from "@/public/vexrobotics.png"
+import scioly from "@/public/scienceolympiadrobot.png"
 export const links = [
   {
     name: "Home",
@@ -20,10 +23,12 @@ export const links = [
     name: "Skills",
     hash: "#skills",
   },
+  /*
   {
     name: "Experience",
     hash: "#experience",
   },
+  */
   {
     name: "Contact",
     hash: "#contact",
@@ -59,26 +64,26 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "Project1",
+    title: "Personal Website",
     description:
-      "Project1 description",
-    tags: ["Huh"],
-    imageUrl: corpcommentImg
+      "This website displays information about me including my projects, skills and ways to contact me. This is a personal website that I created as a way to learn HTML, CSS, React, TypeScript, NextJS and Framer Motion. ",
+    tags: ["NextJS", "React", "TailwindCSS", "FramerMotion", "TypeScript"],
+    imageUrl: personalwebsite
     
   },
   {
-    title: "Project2",
+    title: "VEX Robotics Program",
     description:
-      "Project2 description",
-    tags: ["Huh"],
-    imageUrl: corpcommentImg
+      "During High School, I competed in VEX Robotics Competition on team 1353N to build, program and operate Robots against other teams to do specific tasks such as shooting disks in baskets in rapid succession and maneuvring around the field autonomously. I utilized various Open Source Programs as well as my own functionalities within my program to make my team more competitive.",
+    tags: ["C++", "Controls Engineering", "PID", "Odometry", "Autonomous Movement"],
+    imageUrl: vexrobotics
   },
   {
-    title: "Project3",
+    title: "Science Olympiad Robot Tour",
     description:
-      "Project3 description",
-    tags: ["Huh"],
-    imageUrl: corpcommentImg
+      "I worked in a team of 2 to build a robot completely from scratch by using CAD, 3d Printed Chassis, Arduino to program it to move in a specific arrangement at the Science Olympiad competition. To achieve this we used Servo Motors as wheels and we wrote a PID program so that the robot would move precisely in a certain path. ",
+    tags: ["Arduino", "C++", "PID", "Autonomous Movement"],
+    imageUrl: scioly
   },
 ] as const;
 
@@ -92,14 +97,12 @@ export const skillsData = [
   "Node.js",
   "Git",
   "Tailwind",
-  "Prisma",
-  "MongoDB",
-  "Redux",
-  "GraphQL",
-  "Apollo",
-  "Express",
-  "PostgreSQL",
   "Python",
-  "Django",
   "Framer Motion",
+  "C++",
+  "Arduino",
+  "Controls Engineering",
+  "PID",
+  "Odometry",
+  "Robotics Autonomous Movement",
 ] as const;

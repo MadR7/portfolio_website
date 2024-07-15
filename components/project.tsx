@@ -28,11 +28,11 @@ export default function Project({ title, description, tags, imageUrl }: ProjectP
     >
     <section 
     
-    className='group relative bg-[#183059] rounded-lg shadow-lg overflow-hidden hover:bg-[#0b1125] transition mx-auto max-w-3xl'> {/* Added mx-auto and max-w-3xl */}
+    className='group relative bg-[#183059] rounded-lg shadow-lg overflow-hidden hover:bg-[#0b1125] transition mx-auto max-w-5xl'> {/* Added mx-auto and max-w-3xl */}
       <div className='flex flex-col md:flex-row'>
         <div className='md:w-1/2 p-8'>
           <h3 className='text-2xl font-semibold text-white'>{title}</h3>
-          <p className="mt-4 text-gray-200">{description}</p>
+          <p className="mt-4 text-xl text-gray-200">{description}</p>
           <ul className='flex flex-wrap mt-4 gap-2'>
             {tags.map((tag, index) => (
               <li

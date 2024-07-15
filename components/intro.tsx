@@ -1,19 +1,33 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs';
 import { HiDownload } from 'react-icons/hi';
 import { FaGithubSquare } from 'react-icons/fa';
 import Typewriter from 'typewriter-effect';
+import { useInView } from 'react-intersection-observer';
+import { useActiveSectionContext } from '@/context/active-section-context';
 
 export default function Intro() {
+  const {ref, inView} = useInView(
+    {
+      threshold: 0.5
+    }
+  )
+  const {setActiveSection} = useActiveSectionContext();
+
+  useEffect(()=>{
+    if (inView){
+      setActiveSection("Home")
+    }
+  }, [inView, setActiveSection]);
  /* const [showButtons, setShowButtons] = useState(false);*/
   return (
     <div className='bg-[#0b1125] relative min-h-screen w-full items-center flex flex-col justify-start pt-40'>
-    <section className='relative z-10 mb-28 max-w-[50rem] text-center sm:mb-0'>
+    <section ref = {ref} className='relative z-10 mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]' id = "home">
       <div className="flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
