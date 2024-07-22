@@ -10,7 +10,7 @@ import { FaGithubSquare } from 'react-icons/fa';
 import Typewriter from 'typewriter-effect';
 import { useInView } from 'react-intersection-observer';
 import { useActiveSectionContext } from '@/context/active-section-context';
-
+import pfp from "@/public/pfp.jpg"
 export default function Intro() {
   const {ref, inView} = useInView(
     {
@@ -38,7 +38,7 @@ export default function Intro() {
           }}
         >
           <Image
-            src="https://scontent-lga3-2.cdninstagram.com/v/t51.2885-19/448494791_455174687222568_2603366267414290324_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-lga3-2.cdninstagram.com&_nc_cat=100&_nc_ohc=BTWR-PfzgRsQ7kNvgEM5NFO&gid=e01be2d078e649938f8b253ee0dc13d2&edm=APHcPcMBAAAA&ccb=7-5&oh=00_AYAplpFItHJ7fviiBbALcTSnN74SgE5_1jtLa9p3lzx_lg&oe=6691307D&_nc_sid=bef7bc"
+            src={pfp}
             alt="Madhav Picture"
             width="192"
             height="192"
