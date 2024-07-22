@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react'
 import SectionHeading from './section-heading'
-import { FaPaperPlane } from 'react-icons/fa'
 import { useInView } from 'react-intersection-observer';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import { motion } from 'framer-motion';
+import { sendEmail } from '@/actions/sendEmail';
+import EmailSubmit from './emailSubmit';
+import toast from 'react-hot-toast';
 
 export default function Contact() {
-  const sendEmail = async (formData: FormData) =>{
-    
-  }
-
   const {ref, inView} = useInView(
     {
       threshold: 0.5
@@ -22,8 +20,10 @@ export default function Contact() {
       setActiveSection("Contact")
     }
   }, [inView, setActiveSection]);
+
+
   return (
-    <div className='bg-[#0b1125] pb-[30rem] flex flex-col items-center'>
+    <div className='bg-[#0b1125] flex flex-col items-center'>
       <motion.section ref = {ref} id= "contact" 
       initial = {{opacity: 0}}
       whileInView = {{
@@ -44,10 +44,15 @@ export default function Contact() {
             </a>{" "}
             or through this form.
         </p>
-
+        
         <form className = "mt-10 text-black flex flex-col"
         action = {async (formData)=>{
-          await sendEmail(formData)
+          const {data, error} = await sendEmail(formData)
+          if (error){
+            toast.error(error)
+            return
+          }
+          toast.success("Message sent successfully!")
         }}
         >
             <input 
@@ -65,13 +70,7 @@ export default function Contact() {
             required
             maxLength={500}
             />
-            <div className='flex flex-col items-center'>
-            <button type = "submit"
-            className='mt-3 group flex items-center justify-center gap-2 h-[3rem] w-[8rem] bg-[#183059] text-white border border-[#0b1125] rounded-full outline-none transition-all hover:scale-125'
-            >
-                Submit <FaPaperPlane className = "text-xs opacity-70 group-hover:translate-x-1 group-hover:-translate-y-1 transition"/>
-            </button>
-            </div>
+            <EmailSubmit />
         </form>
       </motion.section>
     </div>
