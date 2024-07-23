@@ -44,7 +44,7 @@ export default function Intro() {
             height="192"
             quality={95}
             priority={true}
-            className="rounded-full h-36 w-36 sm:h-48 sm:w-48 border-[0.05rem] border-[#2a303c] shadow-xl object-cover"
+            className="rounded-full h-20 w-20 sm:h-48 sm:w-48 border-[0.05rem] border-[#2a303c] shadow-xl object-cover"
         />
         </motion.div>
         <motion.span className='absolute bottom-0 right-0 text-4xl'
@@ -61,7 +61,7 @@ export default function Intro() {
       </div>
       
       
-      <motion.h1 className="text-white mt-10 mb-10 px-4 text-2xl sm:text-4xl font-medium leading-[1.5]"
+      <motion.h1 className="text-white mt-10 mb-2 sm:mb-10 px-4 text-2xl sm:text-4xl font-medium leading-[1.5]"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -86,7 +86,7 @@ export default function Intro() {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
-    <Link href="#contact" className="group bg-black text-white px-7 py-3 flex items-center
+    <Link href="#contact" className="group bg-black text-xs sm:text-xl text-white px-7 py-3 flex items-center
         gap-2 rounded-full outline-none hover:scale-105 hover:bg-gray-950 active:scale-105
         ">
       <span>Contact me!</span>
@@ -95,7 +95,7 @@ export default function Intro() {
       />
     </Link>
 
-    <a className="group bg-gray-200
+    <a className="group bg-gray-200 text-xs sm:text-xl
         border-black  px-7 py-3 flex items-center
         gap-2 rounded-full outline-none hover:scale-105 active:scale-105
         " href='/resume.pdf' download>

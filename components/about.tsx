@@ -19,10 +19,10 @@ export default function About() {
   }, [inView, setActiveSection, lastClickTime]);
   
   return (
-    <div className="bg-[#183059] relative min-h-screen w-full items-center flex flex-col px-4 py-12 sm:px-6 md:px-8">
+    <div className="bg-[#183059] relative min-h-screen w-full items-center flex flex-col px-4 py-12 sm:px-6 md:px-8 pb-20">
       <section
       ref = {ref}
-      className=" mt-20 max-w-[45rem] text-xl text-gray-200 text-center leading-10 scroll-mt-28"
+      className=" mt-20 max-w-[45rem] text-lg sm:text-xl text-gray-200 text-center sm:leading-10 scroll-mt-28"
       id="about"
     >
       <SectionHeading>About Me</SectionHeading>

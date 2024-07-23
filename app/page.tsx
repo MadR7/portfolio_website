@@ -1,7 +1,6 @@
 "use client"
 import { ParallaxProvider, Parallax } from 'react-scroll-parallax';
 import Intro from "@/components/intro";
-import Header from "@/components/header";
 import About from "@/components/about";
 import Projects from "@/components/projects";
 import Waves1 from '@/components/waves1';

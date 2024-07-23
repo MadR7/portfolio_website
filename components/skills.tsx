@@ -31,14 +31,14 @@ export default function Skills() {
   }, [inView, setActiveSection]); 
   
   return (
-  <div className="bg-[#183059] w-full pb-[30rem]"> {/* Custom padding of 30rem (480px) */}
+  <div className="bg-[#183059] w-full sm:pb-[20rem] pb-[10rem]"> {/* Custom padding of 30rem (480px) */}
       <section
         id="skills"
         ref={ref}
         className="max-w-[53rem] mx-auto px-4 text-white text-center pt-20" // Added pt-20 for top padding
       >
         <SectionHeading>My Skills</SectionHeading>
-        <ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-200'>
+        <ul className='flex flex-wrap justify-center gap-2 text-sm sm:text-lg text-gray-200'>
           {skillsData.map((skill, index) => (
             <motion.li 
               className='bg-[#0f1c42] border border-[#0b1125]/[0.1] rounded-xl px-5 py-3 mb-4'

@@ -21,7 +21,7 @@ export default function Projects() {
   }, [inView, setActiveSection]);
   
   return (
-    <div className='bg-[#0f1c42] text-white relative min-h-screen w-full py-20 pb-72'> {/* Added pb-96 for large bottom padding */}
+    <div className='bg-[#0f1c42] text-white relative min-h-screen w-full py-20 sm:pb-72'> {/* Added pb-96 for large bottom padding */}
       <section
         ref = {ref}
         className="max-w-5xl mx-auto px-4 mb-40 scroll-mt-28" // Added mb-40 for additional margin at the bottom
