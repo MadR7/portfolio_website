@@ -11,7 +11,10 @@ import Typewriter from 'typewriter-effect';
 import { useInView } from 'react-intersection-observer';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import pfp from "@/public/pfp.jpg"
+import { useTheme } from '@/context/theme-context';
 export default function Intro() {
+  const { getSectionBackground, getSectionTextColor } = useTheme();
+  const arrowColor = getSectionBackground('arrowDown');
   const {ref, inView} = useInView(
     {
       threshold: 0.5
@@ -26,7 +29,8 @@ export default function Intro() {
   }, [inView, setActiveSection]);
  /* const [showButtons, setShowButtons] = useState(false);*/
   return (
-    <div className='bg-[#0b1125] relative min-h-screen w-full items-center flex flex-col justify-start pt-40'>
+    <div className='relative min-h-screen w-full items-center flex flex-col justify-start pt-40'
+    style={{ backgroundColor: getSectionBackground('intro') }}>
     <section ref = {ref} className='relative z-10 mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]' id = "home">
       <div className="flex items-center justify-center">
         <motion.div
@@ -61,7 +65,10 @@ export default function Intro() {
       </div>
       
       
-      <motion.h1 className="text-white mt-10 mb-2 sm:mb-10 px-4 text-2xl sm:text-4xl font-medium leading-[1.5]"
+      <motion.h1 className="mt-10 mb-2 sm:mb-10 px-4 text-2xl sm:text-4xl font-medium leading-[1.5]"
+        style={{
+          color: getSectionTextColor('intro')
+        }}
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -96,7 +103,7 @@ export default function Intro() {
     </Link>
 
     <a className="group bg-gray-200 text-xs sm:text-xl
-        border-black  px-7 py-3 flex items-center
+        border-black border-b-2  px-7 py-3 flex items-center
         gap-2 rounded-full outline-none hover:scale-105 active:scale-105
         " href='/resume.pdf' download>
       Resume
@@ -105,7 +112,7 @@ export default function Intro() {
       />
     </a>
 
-    <a className="group bg-gray-200 p-4 text-gray-700 flex items-center gap-2 rounded-full outline-none cursor-pointer hover:scale-125 hover:text-gray-950 active:scale-125"
+    <a className="group bg-gray-200 p-4 border-black border-b-2 text-gray-700 flex items-center gap-2 rounded-full outline-none cursor-pointer hover:scale-125 hover:text-gray-950 active:scale-125"
     href="https://www.linkedin.com/in/madhav-rapelli-7a986a295/" target="_blank"
     >
       <BsLinkedin
@@ -113,7 +120,7 @@ export default function Intro() {
       />
     </a>
 
-    <a className="group bg-gray-200 p-4 text-gray-700 flex items-center gap-2 rounded-full outline-none cursor-pointer hover:scale-125 hover:text-gray-950 active:scale-125"
+    <a className="group bg-gray-200 p-4 border-black border-b-2 text-gray-700 flex items-center gap-2 rounded-full outline-none cursor-pointer hover:scale-125 hover:text-gray-950 active:scale-125"
     href='https://www.github.com/MadR7' target='_blank'         
     >
       <FaGithubSquare />
@@ -144,7 +151,7 @@ export default function Intro() {
         aria-hidden="true"
       >
         <path
-          fill="#f3f4f5"
+          fill={arrowColor}
           d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"
         />
       </svg>

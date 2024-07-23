@@ -3,8 +3,10 @@ import React, { useEffect } from "react";
 import SectionHeading from "./section-heading";
 import { useInView } from "react-intersection-observer";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { useTheme } from "@/context/theme-context";
 
 export default function About() {
+  const { getSectionBackground, getSectionTextColor } = useTheme();
   const {ref, inView} = useInView(
     {
       threshold: 0.75
@@ -19,10 +21,18 @@ export default function About() {
   }, [inView, setActiveSection, lastClickTime]);
   
   return (
-    <div className="bg-[#183059] relative min-h-screen w-full items-center flex flex-col px-4 py-12 sm:px-6 md:px-8 pb-20">
+    <div
+  className="relative min-h-screen w-full items-center flex flex-col px-4 py-12 sm:px-6 md:px-8 pb-20"
+  style={{
+    backgroundColor: getSectionBackground('about'),
+  }}
+>
       <section
       ref = {ref}
-      className=" mt-20 max-w-[45rem] text-lg sm:text-xl text-gray-200 text-center sm:leading-10 scroll-mt-28"
+      className=" mt-20 max-w-[45rem] text-lg sm:text-xl text-center sm:leading-10 scroll-mt-28"
+      style={{
+      color: getSectionTextColor('textColor'),
+    }}
       id="about"
     >
       <SectionHeading>About Me</SectionHeading>

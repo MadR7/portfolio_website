@@ -4,6 +4,9 @@ import { Raleway } from 'next/font/google'
 import ActiveSectionContextProvider from "@/context/active-section-context"
 import { Toaster } from "react-hot-toast"
 import Footer from "@/components/footer"
+import { ThemeContextProvider } from "@/context/theme-context"
+import ThemeSwitch from "@/components/theme-switch"
+import ThemeScript from "@/components/themescript"
 
 const raleway = Raleway({ subsets: ['latin'] })
 
@@ -18,18 +21,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html lang="en" className="!scroll-smooth dark">
+      <head>
+        <ThemeScript />
+      </head>
       <body className={`${raleway.className} `}>
-        <div>
+        <ThemeContextProvider>
           <ActiveSectionContextProvider>
-          <Header />
-          {children}
-          <Footer />
-          <Toaster position="top-right"/>
+            <Header />
+            {children}
+            <Toaster position="top-right"/>
+            <ThemeSwitch />
           </ActiveSectionContextProvider>
-
-          
-        </div>
+        </ThemeContextProvider>
       </body>
     </html>
   )

@@ -6,13 +6,16 @@ import { links } from "@/lib/data";
 import Link from 'next/link';
 import clsx from 'clsx';
 import { ActiveSectionContext, useActiveSectionContext } from '@/context/active-section-context';
-
+import { useTheme } from '@/context/theme-context';
 export default function Header() {
+  const { getSectionBackground, getSectionTextColor } = useTheme();
+
   const {activeSection, setActiveSection, lastClickTimeSet} = useActiveSectionContext();
   return (
     <header className="z-[999] relative">
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-black border-opacity-40 bg-[#12274a] bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-5 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full"
+        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-black border-opacity-40 bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-5 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full"
+        style={{ backgroundColor: getSectionBackground('header') }}
         initial={{ y: -400, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
       ></motion.div>
@@ -27,7 +30,12 @@ export default function Header() {
               animate="visible"
               transition={{ delay: index * 0.1 }}
             >
-              <Link className={clsx("flex w-full items-center justify-center px-5 py-2 hover:text-gray-950 transition",{
+              <Link 
+              style={{
+                color: getSectionTextColor("textColor")
+              }
+              }
+              className={clsx("flex w-full items-center justify-center px-5 py-2 hover:text-gray-950 transition",{
                 "text-gray-500": activeSection === link.name, 
               }
               )}
@@ -39,8 +47,11 @@ export default function Header() {
                 {link.name}
                 {
                   activeSection === link.name && (
-                    <motion.span className = "bg-[#183568] rounded-full absolute inset-0 -z-10"
-                      layoutId='activeSection'
+                    <motion.span className ="rounded-full absolute inset-0 -z-10"
+                    style={{
+                      backgroundColor: getSectionBackground('headerHover')
+                    }}  
+                    layoutId='activeSection'
                       transition = {{
                         type: "spring",
                         stiffness: 380,

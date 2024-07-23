@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 // hooks/useMediaQuery.ts
 import { useState, useEffect } from 'react';
+import { useTheme } from "@/context/theme-context";
 
 export function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState<boolean>(false);
@@ -29,6 +30,7 @@ export function useMediaQuery(query: string): boolean {
 type ProjectProps = (typeof projectsData)[number];
 
 export default function Project({ title, description, tags, imageUrl }: ProjectProps) {
+  const {getSectionBackground, getSectionTextColor} = useTheme()
   const ref = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -49,12 +51,18 @@ export default function Project({ title, description, tags, imageUrl }: ProjectP
     className = ""
     >
     <section 
-    
+    style={{
+      backgroundColor: getSectionBackground('skills'),
+    }}
     className='group relative bg-[#183059] rounded-lg shadow-lg overflow-hidden hover:bg-[#0b1125] transition mx-auto max-w-5xl'> {/* Added mx-auto and max-w-3xl */}
       <div className='flex flex-col md:flex-row'>
         <div className='md:w-1/2 p-8'>
-          <h3 className='text-xl sm:text-2xl font-semibold text-white'>{title}</h3>
-          <p className="mt-4 text-lg sm:text-xl text-gray-200">{description}</p>
+          <h3 
+          style={{color: getSectionTextColor('textColor')}}
+          className='text-xl sm:text-2xl font-semibold'>{title}</h3>
+          <p 
+          style={{color:getSectionTextColor('textColor2')}}
+          className="mt-4 text-lg sm:text-xl">{description}</p>
           <ul className='flex flex-wrap mt-4 gap-2'>
             {tags.map((tag, index) => (
               <li

@@ -1,6 +1,9 @@
 import React from 'react'
+import { useTheme } from "@/context/theme-context";
 
 export default function Footer() {
+  const { getSectionBackground } = useTheme();
+
   return (
     <div className='bg-[#0b1125]'>
       <footer className="px-4 mb-8 text-center text-gray-200">

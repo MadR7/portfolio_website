@@ -6,8 +6,10 @@ import { motion } from 'framer-motion';
 import { sendEmail } from '@/actions/sendEmail';
 import EmailSubmit from './emailSubmit';
 import toast from 'react-hot-toast';
+import { useTheme } from '@/context/theme-context';
 
 export default function Contact() {
+  const { getSectionBackground, getSectionTextColor } = useTheme();
   const {ref, inView} = useInView(
     {
       threshold: 0.5
@@ -23,7 +25,8 @@ export default function Contact() {
 
 
   return (
-    <div className='bg-[#0b1125] flex flex-col items-center'>
+    <div className='flex flex-col items-center'
+    style={{ backgroundColor: getSectionBackground('contact') }}>
       <motion.section ref = {ref} id= "contact" 
       initial = {{opacity: 0}}
       whileInView = {{
@@ -33,10 +36,14 @@ export default function Contact() {
         duration: 1
       }}
       className='text-white mb-20 sm:mb-28 w-[min(100%,38rem)] scroll-mt-28'>
-        <div className = "flex flex-col items-center">
+        <div 
+        style={{color:getSectionTextColor("textColor")}}
+        className = "flex flex-col items-center">
         <SectionHeading>Contact Me!</SectionHeading>
         </div>
-        <p className="text-center -mt-5 text-gray-300
+        <p 
+        style={{color:getSectionTextColor("textColor2")}}
+        className="text-center -mt-5 text-gray-300
         ">
             You can contact me directly at {" "}
             <a className='underline' href='madhavrapelli@gmail.com'>
