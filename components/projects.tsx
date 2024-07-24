@@ -15,13 +15,13 @@ export default function Projects() {
       threshold: 0.5
     }
   )
-  const {setActiveSection} = useActiveSectionContext();
+  const {setActiveSection, lastClickTime} = useActiveSectionContext();
 
   useEffect(()=>{
-    if (inView){
+    if (inView && Date.now() - lastClickTime > 1000){
       setActiveSection("Projects")
     }
-  }, [inView, setActiveSection]);
+  }, [inView, setActiveSection, lastClickTime]);
   
   return (
     <div className='text-white relative min-h-screen w-full py-20 sm:pb-72'

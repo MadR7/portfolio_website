@@ -24,13 +24,13 @@ export default function Skills() {
       threshold: 0.85
     }
   )
-  const {setActiveSection} = useActiveSectionContext();
+  const {setActiveSection, lastClickTime} = useActiveSectionContext();
 
   useEffect(()=>{
-    if (inView){
+    if (inView && Date.now() - lastClickTime > 1000){
       setActiveSection("Skills")
     }
-  }, [inView, setActiveSection]); 
+  }, [inView, setActiveSection, lastClickTime]); 
   
   return (
   <div className="w-full sm:pb-[20rem] pb-[10rem]"
