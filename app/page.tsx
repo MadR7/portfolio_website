@@ -9,6 +9,7 @@ import Waves3 from '@/components/waves3';
 import Skills from '@/components/skills';
 import Waves4 from '@/components/waves4';
 import Contact from '@/components/contact';
+import Contact2 from '@/components/contact2';
 
 export default function Home() {
   return (
@@ -25,7 +26,8 @@ export default function Home() {
       <Waves3 />
       <Skills />
       <Waves4 />
-      <Contact />
+{/*      <Contact /> */}
+      <Contact2 />
       </Parallax>
     </ParallaxProvider>
     </>
