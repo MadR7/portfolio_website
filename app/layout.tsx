@@ -7,6 +7,8 @@ import Footer from "@/components/footer"
 import { ThemeContextProvider } from "@/context/theme-context"
 import ThemeSwitch from "@/components/theme-switch"
 import ThemeScript from "@/components/themescript"
+import { ClerkProvider } from "@clerk/nextjs"
+
 
 const raleway = Raleway({ subsets: ['latin'] })
 
@@ -26,14 +28,15 @@ export default function RootLayout({
         <ThemeScript />
       </head>
       <body className={`${raleway.className} `}>
+        <ClerkProvider>
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
-            <Header />
             {children}
             <Toaster position="top-right"/>
             <ThemeSwitch />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
+        </ClerkProvider>
       </body>
     </html>
   )

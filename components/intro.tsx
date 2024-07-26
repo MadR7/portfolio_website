@@ -12,6 +12,7 @@ import { useInView } from 'react-intersection-observer';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import pfp from "@/public/pfp.jpg"
 import { useTheme } from '@/context/theme-context';
+import { SignInButton} from '@clerk/nextjs';
 export default function Intro() {
   const { getSectionBackground, getSectionTextColor } = useTheme();
   const arrowColor = getSectionBackground('arrowDown');
@@ -93,15 +94,16 @@ export default function Intro() {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
-    <Link href="#contact" className="group bg-black text-xs sm:text-xl text-white px-7 py-3 flex items-center
+    <SignInButton>
+    <button className="group bg-black text-xs sm:text-xl text-white px-7 py-3 flex items-center
         gap-2 rounded-full outline-none hover:scale-105 hover:bg-gray-950 active:scale-105
         ">
-      <span>Contact me!</span>
+      <span>Email me!</span>
       <BsArrowRight
         className="opacity-70 group-hover:translate-x-2 transition"
       />
-    </Link>
-
+    </button>
+    </SignInButton>
     <a className="group bg-gray-200 text-xs sm:text-xl
         border-black border-b-2  px-7 py-3 flex items-center
         gap-2 rounded-full outline-none hover:scale-105 active:scale-105

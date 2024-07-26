@@ -10,12 +10,14 @@ import Skills from '@/components/skills';
 import Waves4 from '@/components/waves4';
 import Contact from '@/components/contact';
 import Contact2 from '@/components/contact2';
+import Header from '@/components/header';
 
 export default function Home() {
   return (
     <>
     <ParallaxProvider>
       <Parallax speed={-25}>
+      <Header />
       <Intro />
       </Parallax>
       <Parallax>
