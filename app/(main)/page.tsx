@@ -17,7 +17,6 @@ export default function Home() {
     <>
     <ParallaxProvider>
       <Parallax speed={-25}>
-      <Header />
       <Intro />
       </Parallax>
       <Parallax>
