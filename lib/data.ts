@@ -1,6 +1,7 @@
 import personalwebsite from "@/public/personalwebsite.png"
 import vexrobotics from "@/public/vexrobotics.png"
 import scioly from "@/public/scienceolympiadrobot.png"
+import askthebot from "@/public/askthebot.png"
 export const links = [
   {
     name: "Home",
@@ -32,6 +33,14 @@ export const links = [
 
 
 export const projectsData = [
+  {
+    title: "Ask The Bot",
+    description:
+      "This web app can take in any article's URL and then understand it so the user can ask any questions they have about the article. This was made possible because of Upstash's free services. This uses Meta's LLAMA 3 8b LLM to understand the article and answer questions.",
+    tags: ["NextJS", "React", "TailwindCSS", "TypeScript", "LLMs", "Upstash", "ChatApp"],
+    imageUrl: askthebot
+    
+  },
   {
     title: "Personal Website",
     description:
