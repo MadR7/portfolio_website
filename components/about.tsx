@@ -63,7 +63,7 @@ export default function About() {
       </p>
 
       <p>
-        In my free time, I mentor a High School VEX Robotics team competiting in Southern New York.
+        In my free time, I mentor a High School VEX Robotics team competing in Southern New York.
       </p>
     </section>
     </div>
