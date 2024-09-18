@@ -52,7 +52,7 @@ export const projectsData = [
   {
     title: "VEX Robotics Program",
     description:
-      "During High School, I competed in VEX Robotics Competition on team 1353N to build, program and operate Robots against other teams to do specific tasks such as shooting disks in baskets in rapid succession and maneuvring around the field autonomously. I utilized various Open Source Programs as well as my own functionalities within my program to make my team more competitive.",
+      "During High School, I competed in VEX Robotics Competition on team 1353N to build, program and operate Robots against other teams to do specific tasks such as shooting disks in baskets in rapid succession and maneuvring around the field autonomously. I utilized various Open Source Programs as well as my own functionalities within my program to make my team more competitive. We were top 0.05% at the 2024 VEX Robotics Worlds Championship",
     tags: ["C++", "Controls Engineering", "PID", "Odometry", "Autonomous Movement"],
     imageUrl: vexrobotics
   },
