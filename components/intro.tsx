@@ -172,7 +172,11 @@ export default function Intro() {
     }
     }
     >
-      <span className="text-xs italic">{"(Scroll Down)"}</span>
+      <span 
+      style={{
+        color: getSectionTextColor('intro')
+      }}
+      className="text-xs italic">{"(Scroll Down)"}</span>
     </motion.p>
     </section>
     </div>
