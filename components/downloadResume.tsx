@@ -7,7 +7,8 @@ const GitHubResumeButton = () => {
     try {
       const response = await fetch('/api/getResume');
       if (!response.ok) {
-        throw new Error('Failed to fetch PDF');
+        const errorText = await response.text();
+        throw new Error(`Failed to fetch PDF: ${response.status} ${response.statusText}\n${errorText}`);
       }
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
@@ -20,7 +21,11 @@ const GitHubResumeButton = () => {
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error downloading PDF:', error);
-      alert('Failed to download resume. Please try again.');
+      if (error instanceof Error) {
+        alert(`Failed to download resume. Please try again. Error: ${error.message}`);
+      } else {
+        alert('Failed to download resume. Please try again.');
+      }
     }
   };
 
