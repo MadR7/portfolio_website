@@ -114,9 +114,9 @@ export default function Intro() {
       <HiDownload
         className="group-hover:translate-y-0.5 transition"
       />
-    </a> */}
+    </a> 
     <GitHubResumeButton />
-
+*/}
     <a className="group bg-gray-200 p-4 border-black border-b-2 text-gray-700 flex items-center gap-2 rounded-full outline-none cursor-pointer hover:scale-125 hover:text-gray-950 active:scale-125"
     href="https://www.linkedin.com/in/madhav-rapelli-7a986a295/" target="_blank"
     >
