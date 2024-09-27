@@ -15,7 +15,7 @@ const GitHubResumeButton = () => {
       const a = document.createElement('a');
       a.style.display = 'none';
       a.href = url;
-      a.download = 'resume.pdf';
+      a.download = 'madhav_rapelli_resume.pdf';
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
