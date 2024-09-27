@@ -13,6 +13,7 @@ import { useActiveSectionContext } from '@/context/active-section-context';
 import pfp from "@/public/pfp.jpg"
 import { useTheme } from '@/context/theme-context';
 import { SignInButton} from '@clerk/nextjs';
+import GitHubResumeButton from './downloadResume';
 export default function Intro() {
   const { getSectionBackground, getSectionTextColor } = useTheme();
   const arrowColor = getSectionBackground('arrowDown');
@@ -104,6 +105,7 @@ export default function Intro() {
       />
     </button>
     </SignInButton>
+    {/*
     <a className="group bg-gray-200 text-xs sm:text-xl
         border-black border-b-2  px-7 py-3 flex items-center
         gap-2 rounded-full outline-none hover:scale-105 active:scale-105
@@ -112,7 +114,8 @@ export default function Intro() {
       <HiDownload
         className="group-hover:translate-y-0.5 transition"
       />
-    </a>
+    </a> */}
+    <GitHubResumeButton />
 
     <a className="group bg-gray-200 p-4 border-black border-b-2 text-gray-700 flex items-center gap-2 rounded-full outline-none cursor-pointer hover:scale-125 hover:text-gray-950 active:scale-125"
     href="https://www.linkedin.com/in/madhav-rapelli-7a986a295/" target="_blank"

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.6",
+    "@octokit/rest": "^21.0.2",
     "@react-email/components": "^0.0.21",
     "@react-email/tailwind": "^0.0.18",
     "@types/node": "20.14.10",
@@ -21,6 +22,7 @@
     "eslint-config-next": "14.2.4",
     "framer-motion": "^11.2.13",
     "next": "14.2.4",
+    "octokit": "^4.0.2",
     "postcss": "8.4.39",
     "react": "18.3.1",
     "react-dom": "18.3.1",
