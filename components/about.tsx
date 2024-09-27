@@ -38,7 +38,7 @@ export default function About() {
       <SectionHeading>About Me</SectionHeading>
       <p className="mb-3">
         I am an undergraduate student at 
-        <span className="font-bold"> Stony Brook Univesrity </span>
+        <span className="font-bold"> Stony Brook University </span>
         studying
         <span className="font-bold"> Computer Science </span>
         and
