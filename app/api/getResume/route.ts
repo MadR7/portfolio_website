@@ -1,12 +1,13 @@
 import { Octokit } from "octokit";
    import { NextRequest, NextResponse } from "next/server";
 
-   const octokit = new Octokit({ auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN })
 
    export async function GET(request: NextRequest) {
      console.log("API route started");
      try {
        console.log("Fetching resume from GitHub");
+       const octokit = new Octokit({ auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN })
+
        const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
          owner: "MadR7",
          repo: "resume",

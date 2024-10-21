@@ -11,6 +11,7 @@ import Waves4 from '@/components/waves4';
 import Contact from '@/components/contact';
 import Contact2 from '@/components/contact2';
 import Header from '@/components/header';
+import SkillsCloud from '@/components/skillsCloud';
 
 export default function Home() {
   return (
