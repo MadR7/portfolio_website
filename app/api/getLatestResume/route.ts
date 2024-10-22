@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
-
+import { auth } from '@clerk/nextjs/server';
 export async function GET() {
   return handleRequest();
 }
@@ -10,6 +10,10 @@ export async function POST() {
 }
 
 async function handleRequest() {
+  const { userId } = auth();
+  if (!userId){
+    return NextResponse.json({error:"Unauthorized"}, {status:401});
+  }
   const octokit = new Octokit({ auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN });
 
   try {

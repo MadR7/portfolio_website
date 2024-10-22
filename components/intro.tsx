@@ -1,22 +1,25 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs';
-import { HiDownload } from 'react-icons/hi';
 import { FaGithubSquare } from 'react-icons/fa';
 import Typewriter from 'typewriter-effect';
 import { useInView } from 'react-intersection-observer';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import pfp from "@/public/pfp.jpg"
 import { useTheme } from '@/context/theme-context';
-import { SignInButton} from '@clerk/nextjs';
-import GitHubResumeButton from './downloadResume';
+import { useAuth} from '@clerk/nextjs';
+import ResumeButton from './downloadResume';
+import { useRouter } from 'next/navigation';
+
 export default function Intro() {
   const { getSectionBackground, getSectionTextColor } = useTheme();
   const arrowColor = getSectionBackground('arrowDown');
+  const {isSignedIn} = useAuth()
+  const router = useRouter();
   const {ref, inView} = useInView(
     {
       threshold: 0.5
@@ -29,6 +32,16 @@ export default function Intro() {
       setActiveSection("Home")
     }
   }, [inView, setActiveSection]);
+
+
+  const handleEmailClick = () => {
+    if (isSignedIn){
+      router.push("/email");
+    }else{
+      router.push("/sign-in?redirect=/email");
+    }
+  }
+
  /* const [showButtons, setShowButtons] = useState(false);*/
   return (
     <div className='relative min-h-screen w-full items-center flex flex-col justify-start pt-40'
@@ -95,27 +108,17 @@ export default function Intro() {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5 }}
   >
-    <SignInButton>
+    
     <button className="group bg-black text-xs sm:text-xl text-white px-7 py-3 flex items-center
         gap-2 rounded-full outline-none hover:scale-105 hover:bg-gray-950 active:scale-105
-        ">
+        "
+        onClick={handleEmailClick}>
       <span>Email me!</span>
       <BsArrowRight
         className="opacity-70 group-hover:translate-x-2 transition"
       />
     </button>
-    </SignInButton>
-    {/*
-    <a className="group bg-gray-200 text-xs sm:text-xl
-        border-black border-b-2  px-7 py-3 flex items-center
-        gap-2 rounded-full outline-none hover:scale-105 active:scale-105
-        " href='/resume.pdf' download>
-      Resume
-      <HiDownload
-        className="group-hover:translate-y-0.5 transition"
-      />
-    </a> */}
-    <GitHubResumeButton />
+    <ResumeButton />
 
     <a className="group bg-gray-200 p-4 border-black border-b-2 text-gray-700 flex items-center gap-2 rounded-full outline-none cursor-pointer hover:scale-125 hover:text-gray-950 active:scale-125"
     href="https://www.linkedin.com/in/madhav-rapelli-7a986a295/" target="_blank"

@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { HiDownload } from 'react-icons/hi';
-
-const GitHubResumeButton: React.FC = () => {
+import { useAuth } from '@clerk/nextjs';
+import { useRouter, useSearchParams } from 'next/navigation';
+const ResumeButton: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleDownload = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+  const {isSignedIn} = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const handleDownload = useCallback(async (e?: React.MouseEvent<HTMLButtonElement>) => {
+    e?.preventDefault();
     setIsLoading(true);
+
+    if (!isSignedIn) {
+      router.push('/sign-in?redirect=/&downloadResume=true');
+      return;
+    }
 
     try {
       const response = await fetch('/api/getLatestResume', {
-        method: 'POST', // Change this to POST
+        method: 'POST',
       });
+      if (response.status === 401) {
+        router.push('/sign-in?redirect=/&downloadResume=true');
+        return;
+      }
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -30,7 +42,14 @@ const GitHubResumeButton: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [isSignedIn, router]);
+
+  useEffect(() => {
+    const downloadResume = searchParams.get('downloadResume');
+    if (isSignedIn && downloadResume === 'true') {
+      handleDownload();
+    }
+  }, [isSignedIn, searchParams, handleDownload]);
 
   return (
     <button
@@ -47,4 +66,4 @@ const GitHubResumeButton: React.FC = () => {
   );
 };
 
-export default GitHubResumeButton;
+export default ResumeButton;

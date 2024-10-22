@@ -7,8 +7,8 @@ import ActiveSectionContextProvider from "@/context/active-section-context"
 const raleway = Raleway({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Madhav Rapelli | Portfolio',
-  description: 'This is just a simple portfolio website',
+  title: 'Madhav Rapelli',
+  description: 'This is my personal website',
 }
 
 export default function RootLayout({
