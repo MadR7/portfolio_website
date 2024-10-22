@@ -3,11 +3,7 @@ import SectionHeading from './section-heading'
 import { useInView } from 'react-intersection-observer';
 import { useActiveSectionContext } from '@/context/active-section-context';
 import { motion } from 'framer-motion';
-import { sendEmail } from '@/actions/sendEmail';
-import EmailSubmit from './emailSubmit';
-import toast from 'react-hot-toast';
 import { useTheme } from '@/context/theme-context';
-import Link from 'next/link';
 
 export default function Contact2() {
   const { getSectionBackground, getSectionTextColor } = useTheme();

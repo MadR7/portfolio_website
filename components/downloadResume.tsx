@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { HiDownload } from 'react-icons/hi';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth, useUser } from '@clerk/nextjs';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { sendNotification } from '@/actions/sendNotification';
 const ResumeButton: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {isSignedIn} = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const user = useUser();
   const handleDownload = useCallback(async (e?: React.MouseEvent<HTMLButtonElement>) => {
     e?.preventDefault();
     setIsLoading(true);
@@ -36,13 +38,18 @@ const ResumeButton: React.FC = () => {
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
+      const result = await sendNotification();
+      if (result.error){
+        console.error('Error sending notification:', result.error);
+      }
+
     } catch (error) {
       console.error('Error downloading resume:', error);
       alert('Failed to download resume. Please try again.');
     } finally {
       setIsLoading(false);
     }
-  }, [isSignedIn, router]);
+  }, [isSignedIn, router, user]);
 
   useEffect(() => {
     const downloadResume = searchParams.get('downloadResume');
