@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTheme } from '@/context/theme-context';
 import { motion } from 'framer-motion';
 import SectionHeading from '@/components/section-heading';
@@ -9,8 +9,21 @@ import toast from 'react-hot-toast';
 import EmailSubmit from '@/components/emailSubmit';
 import Link from 'next/link';
 import { MdHome } from "react-icons/md";
+import { SignOutButton, useClerk, useUser } from '@clerk/nextjs';
+import { useRouter } from 'next/navigation';
 export default function Email() {
+  const [isSigningOut, setIsSigningOut] = useState(false)
+  const user = useUser()
+  const email = user.user?.primaryEmailAddress?.toString()
+  const router = useRouter()
+  const {signOut} = useClerk();
   const { getSectionBackground, getSectionTextColor } = useTheme();
+
+  const handleClick = () => {
+    signOut;
+    router.push("/sign-in?redirect=/email");
+  }
+
   return (
     <div
     style={{backgroundColor: getSectionBackground("about")}}
@@ -43,7 +56,30 @@ export default function Email() {
             </a>{" "}
             or through this form.
         </p>
-        
+        <p 
+      style={{color:getSectionTextColor("textColor2")}}
+      className="text-center mt-5 text-gray-300"
+    >
+      {isSigningOut ? (
+        "Hold on a second..."
+      ) : (
+        <>
+          You are emailing from: <span className='underline'>{email}</span>{" "}
+          <button 
+            onClick={async () => {
+              setIsSigningOut(true);
+              await signOut(() => {
+                router.push("/sign-in?redirect=/email");
+              });
+            }} 
+            className='underline font-bold'
+          >
+            (Change)
+          </button>
+        </>
+      )}
+    </p>
+
         <form className = "mt-10 text-black flex flex-col"
         action = {async (formData)=>{
           const {data, error} = await sendEmail(formData)

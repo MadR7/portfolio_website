@@ -33,7 +33,6 @@ export const sendNotification = async() => {
             error: getErrorMessage(error)
         }
     }
-
     return {
         data
     };
