@@ -9,35 +9,35 @@ export const themeConfig = {
         dark:"#f3f4f5",
     },
     header:{
-      light: "#f9e2af",  // Light yellow
+      light: "#f9e2af",  
       dark: "#12274a",
     },
     headerHover:{
-        light: "#faf3d7",  // Light yellow
+        light: "#faf3d7",  
         dark: "#183568",
     },
     intro: {
-      light: "#faf3d7",  // Light beige
+      light: "#faf3d7",  
       dark: "#0b1125",
     },
     about: {
-      light: "#e8d49b",  // Very light peach
+      light: "#e8d49b", 
       dark: "#183059",
     },
     projects: {
-      light: "#fdf4e3",  // Warm off-white
+      light: "#fdf4e3", 
       dark: "#0f1c42",
     },
     skills: {
-      light: "#f0cd90",  // Light orange
+      light: "#f0cd90", 
       dark: "#183059",
     },
     contact: {
-      light: "#f9e2af",  // Light yellow
+      light: "#f9e2af",  
       dark: "#0b1125",
     },
     skill: {
-      light: "#fde7bd",  // Light golden
+      light: "#fde7bd",  
       dark: "#0f1c42",
     },
     textColor:{
