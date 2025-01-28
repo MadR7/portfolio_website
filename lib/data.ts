@@ -3,6 +3,7 @@ import vexrobotics from "@/public/vexrobotics.png"
 import scioly from "@/public/scienceolympiadrobot.png"
 import askthebot from "@/public/askthebot.png"
 import docsage from "@/public/docsage.png"
+import nexus from "@/public/nexus.png"
 export const links = [
   {
     name: "Home",
@@ -33,7 +34,14 @@ export const links = [
 ] as const;
 export const projectsData = [
   {
-    title: "DocSage (in progress)",
+    title: "Nexus (in progress)",
+    description: "A platform for students from Stony Brook University to find professors and their research based on the student's interests. Currently we have over 250 professors on our website",
+    tags: ["NextJS", "React", "TailwindCSS", "PostgreSQL", "Supabase"],
+    imageUrl: nexus,
+    backgroundColor: "linear-gradient(135deg, #183568 0%, #0b1125 100%)"  // Keeping this dark blue
+  },
+  {
+    title: "DocSage",
     description: "This web app can take in a PDF under 10mb and then store it an AWS S3 Bucket. Then later the PDF is broken into chunks and stored in a vector database(PineconeDB). The user can later ask a chatbot powered by OpenAI any question regarding the PDF and it will be able to answer it",
     tags: ["NextJS", "React", "TailwindCSS", "TypeScript", "PineconeDB", "AWS S3", "RAG"],
     imageUrl: docsage,
@@ -60,13 +68,13 @@ export const projectsData = [
     imageUrl: scioly,
     backgroundColor: "linear-gradient(135deg, #b89d65 0%, #8f7544 100%)"  // Darker warm gold
   },
-  {
-    title: "Personal Website",
-    description: "This website displays information about me including my projects, skills and ways to contact me. This is a personal website that I created as a way to learn HTML, CSS, React, TypeScript, NextJS and Framer Motion.",
-    tags: ["NextJS", "React", "TailwindCSS", "FramerMotion", "TypeScript"],
-    imageUrl: personalwebsite,
-    backgroundColor: "linear-gradient(135deg, #183568 0%, #0b1125 100%)"  // Keeping this dark blue
-  },
+  // {
+  //   title: "Personal Website",
+  //   description: "This website displays information about me including my projects, skills and ways to contact me. This is a personal website that I created as a way to learn HTML, CSS, React, TypeScript, NextJS and Framer Motion.",
+  //   tags: ["NextJS", "React", "TailwindCSS", "FramerMotion", "TypeScript"],
+  //   imageUrl: personalwebsite,
+  //   backgroundColor: "linear-gradient(135deg, #183568 0%, #0b1125 100%)"  // Keeping this dark blue
+  // },
 ] as const;
 export const skillsData = [
   "HTML",
