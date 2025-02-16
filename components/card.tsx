@@ -3,20 +3,9 @@ import Image, { StaticImageData } from 'next/image'
 import { motion } from 'framer-motion'
 import { useTheme } from '@/context/theme-context'
 import Link from 'next/link'
+import { TeamMember, Project } from '@/lib/data'
 
-interface TeamMember {
-    name: string;
-    link: string;
-}
-
-interface CardProps {
-    title: string,
-    description: string,
-    tags: readonly string[],
-    imageUrl: StaticImageData,
-    link?: string,
-    team?: TeamMember[],
-}
+type CardProps = Project;
 
 const Card: React.FC<CardProps> = ({ 
     title, 

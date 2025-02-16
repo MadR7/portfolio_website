@@ -6,10 +6,20 @@ import docsage from "@/public/docsage.png"
 import nexus from "@/public/nexus.png"
 import sbuscheduler from "@/public/sbuscheduler.png"
 import socialstockfish from "@/public/socialstockfish.png"
+import { StaticImageData } from "next/image"
 
-interface TeamMember {
-  name: string;
-  link: string;
+export interface TeamMember {
+  readonly name: string;
+  readonly link: string;
+}
+
+export type Project = {
+  readonly title: string;
+  readonly description: string;
+  readonly tags: readonly string[];
+  readonly imageUrl: StaticImageData;
+  readonly link?: string;
+  readonly team?: readonly TeamMember[];
 }
 
 export const links = [
@@ -41,7 +51,7 @@ export const links = [
   },
 ] as const;
 
-export const projectsData = [
+export const projectsData: readonly Project[] = [
   {
     title: "Social Stockfish (Columbia Devfest Overall Best Hack 2025)",
     description: "An iMessage-based AI system inspired by the Stockfish chess engine that generates and evaluates conversation strategies in real-time. Using a dual-agent architecture and parallel processing with Llama 3.3 70B on Groq, it explores hundreds of conversation paths in seconds, evaluating them through weighted Monte Carlo simulations to find optimal social strategies.",
