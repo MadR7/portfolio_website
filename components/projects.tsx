@@ -49,7 +49,7 @@ export default function Projects() {
             className="mt-6 text-lg mx-auto max-w-2xl"
             style={{ color: getSectionTextColor('textColor2') }}
           >
-            Here are some of my recent projects. Each one showcases different skills and technologies.
+            Here are some of my recent projects. 
           </p>
         </div>
 
