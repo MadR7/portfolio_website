@@ -37,15 +37,15 @@ export const themeConfig = {
       dark: "#0b1125",
     },
     skill: {
-      light: "#fde7bd",  
-      dark: "#0f1c42",
+      light: "#c4955a",  // Warm brown for cards in light mode
+      dark: "#183568",   // Rich blue for cards in dark mode
     },
     textColor:{
         light:"#000000",
         dark: "#ffffff",
     },
     textColor2:{
-        light:"#C8C8C8",
-        dark: "#ffffff",
+        light:"#4b3425", // Darker brown for secondary text in light mode
+        dark: "#e6e6e6", // Slightly dimmed white for secondary text in dark mode
     }
   }

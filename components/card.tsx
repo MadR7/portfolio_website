@@ -1,75 +1,151 @@
 import React from 'react'
 import Image, { StaticImageData } from 'next/image'
+import { motion } from 'framer-motion'
+import { useTheme } from '@/context/theme-context'
+import Link from 'next/link'
+
+interface TeamMember {
+    name: string;
+    link: string;
+}
 
 interface CardProps {
     title: string,
     description: string,
     tags: readonly string[],
     imageUrl: StaticImageData,
-    backgroundColor: string,
-    index?: number
+    link?: string,
+    team?: TeamMember[],
 }
 
 const Card: React.FC<CardProps> = ({ 
     title, 
     description, 
     tags, 
-    imageUrl, 
-    backgroundColor,
-    index = 0 
+    imageUrl,
+    link,
+    team,
 }) => {
+    const { getSectionTextColor, getSectionBackground } = useTheme();
+
     return (
-        <div className="h-screen flex items-center justify-center sticky top-20 md:top-0">
+        <motion.div 
+            className="w-full"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+        >
             <div 
-                className="flex flex-col relative h-[700px] w-[1000px] rounded-[25px] p-[10px] md:p-[50px] transition-all duration-500 hover:shadow-2xl backdrop-blur-sm"
+                className="group h-full backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
                 style={{
-                    background: backgroundColor,
-                    top: `calc(-5vh + ${index * 25}px)`,
-                    transformOrigin: 'top',
-                    boxShadow: '0 8px 32px 0 rgb(55 65 81 / 0.5)',                 
+                    background: getSectionBackground('skill'),
                 }}
             >
-                <div className="absolute inset-0 rounded-[25px] bg-gradient-to-b from-black/10 to-transparent pointer-events-none" />
+                {/* Image Section */}
+                <div className="relative h-48 w-full overflow-hidden">
+                    <Image
+                        src={imageUrl}
+                        alt={title}
+                        fill
+                        className="object-cover transform transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                </div>
 
-                <h2 className="text-center m-0 text-[28px] mt-[20px] md:mt-[0px] font-bold relative z-10 text-white mix-blend-exclusion">
-                    {title}
-                </h2>
-                
-                <div className="flex  h-full flex-col md:flex-row relative mt-[10px] md:mt-[50px] gap-[50px] z-10">
-                    <div className="w-full md:w-[40%] relative top-[2%] md:top-[10%]">
-                        <p className="text-center text-base md:text-left first-letter:text-[28px] first-letter:font-serif text-white/90">
-                            {description}
-                        </p>
-                        
-                        <div className="flex flex-wrap items-center justify-center gap-2 mt-4">
-                            {tags.map((tag, index) => (
-                                <span 
+                {/* Content Section */}
+                <div className="p-6 space-y-4">
+                    <h3 
+                        className="text-xl font-bold"
+                        style={{ color: getSectionTextColor('textColor') }}
+                    >
+                        {title}
+                    </h3>
+                    
+                    <p 
+                        className="text-sm"
+                        style={{ color: getSectionTextColor('textColor2') }}
+                    >
+                        {description}
+                    </p>
+
+                    {team && (
+                        <div className="flex flex-wrap gap-2">
+                            <span 
+                                className="text-sm font-medium"
+                                style={{ color: getSectionTextColor('textColor') }}
+                            >
+                                Team:
+                            </span>
+                            {team.map((member, index) => (
+                                <Link 
                                     key={index}
-                                    className="px-3 py-1 text-sm bg-white/20 backdrop-blur-md rounded-full 
-                                             text-white border border-white/20 hover:bg-white/30 
-                                             transition-colors duration-300"
+                                    href={member.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm hover:underline transition-all duration-300"
+                                    style={{ color: getSectionTextColor('textColor2') }}
                                 >
-                                    {tag}
-                                </span>
+                                    {member.name}{index < team.length - 1 ? "," : ""}
+                                </Link>
                             ))}
                         </div>
-                        
+                    )}
+                    
+                    <div className="flex flex-wrap gap-2 pt-2">
+                        {tags.map((tag, index) => (
+                            <span 
+                                key={index}
+                                style={{ 
+                                    color: getSectionTextColor('textColor'),
+                                    borderColor: getSectionTextColor('textColor2'),
+                                    background: getSectionBackground('projects')
+                                }}
+                                className="px-2 py-1 text-xs backdrop-blur-sm rounded-full 
+                                         border transition-colors duration-300
+                                         hover:bg-white/10"
+                            >
+                                {tag}
+                            </span>
+                        ))}
                     </div>
 
-                    <div className="relative w-full md:w-[60%] h-full rounded-[25px] overflow-hidden 
-                                  transform transition-transform duration-500 hover:scale-[1.02]">
-                        <div className="w-full h-full">
-                            <Image
-                                src={imageUrl}
-                                alt={title}
-                                fill
-                                className="object-cover transition-transform duration-500 hover:scale-105"
-                            />
+                    {link && (
+                        <div className="pt-4">
+                            <Link 
+                                href={link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg 
+                                         transition-all duration-300 hover:-translate-y-1"
+                                style={{
+                                    color: getSectionTextColor('textColor'),
+                                    borderColor: getSectionTextColor('textColor2'),
+                                    background: getSectionBackground('projects')
+                                }}
+                            >
+                                View Project
+                                <svg 
+                                    className="w-4 h-4" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        strokeWidth={2} 
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                    />
+                                </svg>
+                            </Link>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,52 +1,81 @@
-
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import SectionHeading from './section-heading'
 import { projectsData } from "@/lib/data"
-import Project from './project'
 import { useActiveSectionContext } from '@/context/active-section-context'
 import { useInView } from 'react-intersection-observer'
 import { useTheme } from '@/context/theme-context'
 import Card from './card'
+import { motion } from 'framer-motion'
 
 export default function Projects() {
-  const { getSectionBackground , getSectionTextColor } = useTheme();
+  const { getSectionBackground, getSectionTextColor } = useTheme();
+  const [showAll, setShowAll] = useState(false);
 
-  const {ref, inView} = useInView(
-    {
-      threshold: 0.5
-    }
-  )
+  const displayedProjects = showAll ? projectsData : projectsData.slice(0, 3);
+
+  const {ref, inView} = useInView({
+    threshold: 0.5
+  });
+  
   const {setActiveSection, lastClickTime} = useActiveSectionContext();
 
-  useEffect(()=>{
-    if (inView && Date.now() - lastClickTime > 1000){
+  useEffect(() => {
+    if (inView && Date.now() - lastClickTime > 1000) {
       setActiveSection("Projects")
     }
   }, [inView, setActiveSection, lastClickTime]);
   
   return (
-    <div className='text-white relative min-h-screen w-full py-20 '
-    style={{ backgroundColor: getSectionBackground('projects'),
-      color: getSectionTextColor('textColor')
-    }}
+    <div 
+      className='relative w-full pt-20 pb-60 md:pt-28 md:pb-80'
+      style={{ 
+        backgroundColor: getSectionBackground('projects'),
+      }}
     >
-      <section
-        ref = {ref}
-        className="max-w-5xl mx-auto px-4 mb-2 md:mb-40 scroll-mt-28" // Added mb-40 for additional margin at the bottom
+      <motion.section
+        ref={ref}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28"
         id="projects"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
       >
-        <div className="text-center mb-2">
-          <SectionHeading>My Projects</SectionHeading>
+        <div className="text-center mb-16">
+          <div style={{ color: getSectionTextColor('textColor') }}>
+            <SectionHeading>My Projects</SectionHeading>
+          </div>
+          <p 
+            className="mt-6 text-lg mx-auto max-w-2xl"
+            style={{ color: getSectionTextColor('textColor2') }}
+          >
+            Here are some of my recent projects. Each one showcases different skills and technologies.
+          </p>
         </div>
-        <div className="">
-          {projectsData.map((project, index) => (
-            <React.Fragment key={index}>
-              {/* <Project {...project} /> */}
-              <Card {...project} />
-            </React.Fragment>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {displayedProjects.map((project, index) => (
+            <Card key={index} {...project} />
           ))}
         </div>
-      </section>
+
+        {projectsData.length > 3 && (
+          <div className="text-center relative z-10">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              style={{ 
+                color: getSectionTextColor('textColor'),
+                borderColor: getSectionTextColor('textColor2')
+              }}
+              className="px-8 py-4 rounded-full bg-white/10 border 
+                       hover:bg-white/20 transition-all duration-300 backdrop-blur-sm
+                       shadow-lg hover:shadow-xl text-lg"
+            >
+              {showAll ? 'Show Less' : 'Show More Projects'}
+            </button>
+          </div>
+        )}
+      </motion.section>
     </div>
   )
 }
