@@ -26,10 +26,7 @@ const Card: React.FC<CardProps> = ({
             viewport={{ once: true }}
         >
             <div 
-                className="group h-full backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
-                style={{
-                    background: getSectionBackground('skill'),
-                }}
+                className="group h-full bg-[#E2B742] backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
             >
                 {/* Image Section */}
                 <div className="relative h-48 w-full overflow-hidden">
@@ -90,9 +87,9 @@ const Card: React.FC<CardProps> = ({
                                 style={{ 
                                     color: getSectionTextColor('textColor'),
                                     borderColor: getSectionTextColor('textColor2'),
-                                    background: getSectionBackground('projects')
+    
                                 }}
-                                className="px-2 py-1 text-xs backdrop-blur-sm rounded-full 
+                                className="px-2 py-1 bg-[#FEE085] text-xs backdrop-blur-sm rounded-full 
                                          border transition-colors duration-300
                                          hover:bg-white/10"
                             >
@@ -107,12 +104,11 @@ const Card: React.FC<CardProps> = ({
                                 href={link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg 
+                                className="inline-flex bg-[#FEE085] items-center gap-2 px-4 py-2 rounded-lg 
                                          transition-all duration-300 hover:-translate-y-1"
                                 style={{
                                     color: getSectionTextColor('textColor'),
                                     borderColor: getSectionTextColor('textColor2'),
-                                    background: getSectionBackground('projects')
                                 }}
                             >
                                 View Project

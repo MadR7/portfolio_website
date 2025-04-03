@@ -19,15 +19,9 @@ export default function Home() {
       <Intro />
       </Parallax>
       <Parallax>
-      <Waves1 />
       <About />
-      <Waves2 />
       <Projects />
-      <Waves3 />
       <Skills />
-      <Waves4 />
-{/*      <Contact /> */}
-      <Contact2 />
       </Parallax>
     </ParallaxProvider>
     </>

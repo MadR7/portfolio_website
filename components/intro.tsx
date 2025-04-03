@@ -44,8 +44,8 @@ export default function Intro() {
 
  /* const [showButtons, setShowButtons] = useState(false);*/
   return (
-    <div className='relative min-h-screen w-full items-center flex flex-col justify-start pt-40'
-    style={{ backgroundColor: getSectionBackground('intro') }}>
+    <div className='relative min-h-screen w-full items-center bg-no-repeat bg-cover bg-center flex flex-col justify-start pt-40'
+    style={{ backgroundImage: "url('/studio_ghibli_background.png')" }}>
     <section ref = {ref} className='relative z-10 mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]' id = "home">
       <div className="flex items-center justify-center">
         <motion.div

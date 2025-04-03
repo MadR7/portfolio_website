@@ -25,8 +25,8 @@ export const themeConfig = {
       dark: "#183059",
     },
     projects: {
-      light: "#fdf4e3", 
-      dark: "#0f1c42",
+      light: "#E2B742", 
+      dark: "#183568",
     },
     skills: {
       light: "#f0cd90", 

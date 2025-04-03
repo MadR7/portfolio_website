@@ -15,7 +15,6 @@ export default function Layout({
       <Header />
       {children}
       <Toaster position="top-right"/>
-      <ThemeSwitch />
       <Analytics />
     </>
   )

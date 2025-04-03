@@ -34,7 +34,7 @@ export function ThemeContextProvider({
   };
 
   const getSectionTextColor = () => {
-    return theme === 'light' ? themeConfig.textColor.light : themeConfig.textColor.dark;
+    return theme === 'light' ? themeConfig.textColor.light : 'light';
   };
 
   useEffect(() => {

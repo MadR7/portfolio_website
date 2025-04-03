@@ -22,10 +22,8 @@ export default function About() {
   
   return (
     <div
-  className="relative min-h-screen w-full items-center flex flex-col px-4 py-12 sm:px-6 md:px-8 pb-20"
-  style={{
-    backgroundColor: getSectionBackground('about'),
-  }}
+  className="relative min-h-screen w-full items-center bg-no-repeat bg-cover bg-center flex flex-col px-4 py-12 sm:px-6 md:px-8 pb-20"
+  style={{ backgroundImage: "url('/studio_ghibli_background_about.png')" }}
 >
       <section
       ref = {ref}

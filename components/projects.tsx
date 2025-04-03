@@ -27,10 +27,8 @@ export default function Projects() {
   
   return (
     <div 
-      className='relative w-full pt-20 pb-60 md:pt-28 md:pb-80'
-      style={{ 
-        backgroundColor: getSectionBackground('projects'),
-      }}
+      className='relative w-full pt-20 bg-no-repeat bg-cover bg-center pb-60 md:pt-28 md:pb-80'
+      style={{ backgroundImage: "url('/studio_ghibli_background_projects.png')" }}
     >
       <motion.section
         ref={ref}
@@ -55,7 +53,7 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {displayedProjects.map((project, index) => (
-            <Card key={index} {...project} />
+            <Card key={index} {...project}  />
           ))}
         </div>
 
